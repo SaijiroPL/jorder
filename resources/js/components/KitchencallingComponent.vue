@@ -1,6 +1,6 @@
 <template>
     <div v-if="count_notification.attend_count > 0">
-        <img :src="'/system/gattuki/jftweb/img/calling_bell.png'" class="calling_bell" id="calling_bell">
+        <img :src="'/img/calling_bell.png'" class="calling_bell" id="calling_bell">
     </div>
 </template>
 
@@ -29,7 +29,7 @@
         },
         methods: {
             get_notification() {
-                axios.get('/system/gattuki/jftweb/api/CountNotification')
+                axios.get('/api/CountNotification')
                     .then(response => {
                         this.count_notification = response.data;
                     });

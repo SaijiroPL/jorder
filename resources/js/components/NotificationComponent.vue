@@ -1,9 +1,9 @@
 <template>
     <ul class="nav navbar pt-0 pb-0 mt-0 mb-0 box-shadow">
-        <li class="menu bg-green" id="ready_to_pay"><img :src="'/system/gattuki/jftweb/img/dollar.png'" class="noti_img" />{{ count_notification.ready_pay_count }}</li>
-        <li class="menu bg-pinq" id="calling_count"><img :src="'/system/gattuki/jftweb/img/notify.png'"  class="noti_img" />{{ count_notification.attend_count }}</li>
-        <li class="menu bg-yellow" id="review_count"><img :src="'/system/gattuki/jftweb/img/chat.png'"  class="noti_img" />{{ count_notification.review_count }}</li>
-        <li class="menu bg-info" id="note_count"><img :src="'/system/gattuki/jftweb/img/writechat.png'"  class="noti_img" />{{ count_notification.note_count }}</li>
+        <li class="menu bg-green" id="ready_to_pay"><img :src="'/img/dollar.png'" class="noti_img" />{{ count_notification.ready_pay_count }}</li>
+        <li class="menu bg-pinq" id="calling_count"><img :src="'/img/notify.png'"  class="noti_img" />{{ count_notification.attend_count }}</li>
+        <li class="menu bg-yellow" id="review_count"><img :src="'/img/chat.png'"  class="noti_img" />{{ count_notification.review_count }}</li>
+        <li class="menu bg-info" id="note_count"><img :src="'/img/writechat.png'"  class="noti_img" />{{ count_notification.note_count }}</li>
     </ul>
 </template>
 
@@ -16,7 +16,7 @@
             }
         },
         mounted() {
-            axios.get('/system/gattuki/jftweb/api/CountNotification')
+            axios.get('/api/CountNotification')
             .then(response => {
                 this.count_notification = response.data;
             })
@@ -29,12 +29,12 @@
                 this.count_notification = event.count_notification;
                 // console.log(this.count_notification.ready_pay_count);
                 if( this.count_notification.selected == 1 ){
-                    document.getElementById("belled_icon_"+this.count_notification.table_id).src = "/system/gattuki/jftweb/img/calling.png";
-                    document.getElementById("belled_list_"+this.count_notification.table_id).src = "/system/gattuki/jftweb/img/calling.png";
+                    document.getElementById("belled_icon_"+this.count_notification.table_id).src = "/img/calling.png";
+                    document.getElementById("belled_list_"+this.count_notification.table_id).src = "/img/calling.png";
                 }
                 else if( this.count_notification.selected == 2 ) {
-                    document.getElementById("call_icon_"+this.count_notification.table_id).src = "/system/gattuki/jftweb/img/alarm.png";
-                    document.getElementById("call_list_"+this.count_notification.table_id).src = "/system/gattuki/jftweb/img/alarm.png";
+                    document.getElementById("call_icon_"+this.count_notification.table_id).src = "/img/alarm.png";
+                    document.getElementById("call_list_"+this.count_notification.table_id).src = "/img/alarm.png";
                 }
                 else if( this.count_notification.selected == 3 ) {
                     document.getElementById("call_icon_"+this.count_notification.table_id).src = "";
@@ -42,8 +42,8 @@
                     document.getElementById("call_list_"+this.count_notification.table_id).style = "";
                 }
                 else if( this.count_notification.selected == 4 ) {
-                    document.getElementById("review_icon_"+this.count_notification.table_id).src = "/system/gattuki/jftweb/img/msg.png";
-                    document.getElementById("review_list_"+this.count_notification.table_id).src = "/system/gattuki/jftweb/img/msg.png";
+                    document.getElementById("review_icon_"+this.count_notification.table_id).src = "/img/msg.png";
+                    document.getElementById("review_list_"+this.count_notification.table_id).src = "/img/msg.png";
                 }
 
             });

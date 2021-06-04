@@ -36,7 +36,7 @@
                 <b>{{ group_order_dish.display_table }}</b><br>({{ group_order_dish.table_count }})
             </td>
             <td width="8%">
-                <img v-if="group_order_dish.dish_image !== null" :src="'/system/gattuki/jftweb/dishes/' + group_order_dish.dish_image" class="general">
+                <img v-if="group_order_dish.dish_image !== null" :src="'/dishes/' + group_order_dish.dish_image" class="general">
             </td>
             <td width="56%" class="dish_list" :data-id=group_order_dish.dish_id>
                 <div><b>{{ group_order_dish.dish_name }}</b></div>
@@ -124,7 +124,7 @@
             // api for get dish list by change group
             get_by_group_order_dishes(group_id) {
                 console.log(group_id);
-                axios.get('/system/gattuki/jftweb/api/get_change_group_dish/' + group_id)
+                axios.get('/api/get_change_group_dish/' + group_id)
                 .then(response => {
                     this.group_order_dishes = response.data;
                 })
@@ -155,7 +155,7 @@
                     } else return item
                 })
 
-                axios.post('/system/gattuki/jftweb/api/ready', {selected_id: selected_id, group_id: group_id})
+                axios.post('/api/ready', {selected_id: selected_id, group_id: group_id})
                 .then(response => {
                     this.isReady = false;
                 })
@@ -187,7 +187,7 @@
                 document.getElementById("total_count").innerText = red_count + yellow_count + green_count + ' / ';
                 setTimeout(this.myTimer, 1000);
 
-                axios.post('/system/gattuki/jftweb/api/unreadyCount', {group_id: this.group}).then(
+                axios.post('/api/unreadyCount', {group_id: this.group}).then(
                     response => {
                         document.getElementById('miss_count').innerText = response.data.total + ' / ' + response.data.group
                     }

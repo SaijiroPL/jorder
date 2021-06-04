@@ -1,11 +1,11 @@
 <template>
 
     <div v-if="this.attend_status === 0" style="width:230px; background: #C9B92E" id="calling_staff">
-        <img :src="'/system/gattuki/jftweb/img/calling_staff.png'" width="60px">
+        <img :src="'/img/calling_staff.png'" width="60px">
         <h3 style="color: white;margin-top: 10px">呼び出し中</h3>
     </div>
     <div v-else-if="this.attend_status === 1" style="width: 230px;" id="calling_staff">
-        <img :src="'/system/gattuki/jftweb/img/call_staff.png'" width="60px" style="margin-top: 10px;">
+        <img :src="'/img/call_staff.png'" width="60px" style="margin-top: 10px;">
         <h3 style="margin-top: 10px">呼出し</h3>
     </div>
 
