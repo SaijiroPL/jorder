@@ -39,7 +39,7 @@
                         this.count_notification = event.count_notification;
                         console.dir('notification-channel');
                         if (this.count_notification.attend_count > 0) {
-                            var audio = new Audio(data.soundurl);
+                            var audio = new Audio(this.soundurl);
                             audio.play();
                         }
                     });

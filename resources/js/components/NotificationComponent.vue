@@ -12,7 +12,8 @@
         // props: ['count_notification'],
         data: function(){
             return {
-                count_notification: []
+                count_notification: [],
+                soundUrl: 'http://soundbible.com/mp3/analog-watch-alarm_daniel-simion.mp3',
             }
         },
         mounted() {
@@ -25,6 +26,8 @@
         created() {
             Echo.channel('notification-channel')//public channel
             .listen('NotificationEvent', (event) => {
+                var audio = new Audio(this.soundurl);
+                audio.play();
                 this.count_notification = event.count_notification;
                 if( this.count_notification.selected == 1 ){
                     document.getElementById("belled_icon_"+this.count_notification.table_id).src = "/img/calling.png";
