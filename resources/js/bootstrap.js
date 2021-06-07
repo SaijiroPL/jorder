@@ -55,7 +55,7 @@ window.Echo = new Echo({
     // wsPort: 6001,
     // disableStats: true,
     broadcaster: 'pusher',
-    key: 'db540053ee54fccf227a',
+    key: '6299a5eac3b9d0ee24f5',
     cluster: 'ap3',
     forceTLS: true
 });

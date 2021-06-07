@@ -77,8 +77,6 @@
         created() {
             Echo.channel('kitchen-channel')//public channel
             .listen('KitchenEvent', (event) => {
-
-                console.log(this.group + "=>" + event.added_dish.group_id);
                 var g_id = event.added_dish.group_id;
 
                 if(('[' + event.added_dish.group_id + ']').includes('&' + this.group + '&') == true) {
@@ -123,7 +121,6 @@
         methods: {
             // api for get dish list by change group
             get_by_group_order_dishes(group_id) {
-                console.log(group_id);
                 axios.get('/api/get_change_group_dish/' + group_id)
                 .then(response => {
                     this.group_order_dishes = response.data;
@@ -166,7 +163,6 @@
                 var green_count = 0;
 
                 this.group_order_dishes = this.group_order_dishes.map((item) => {
-                    console.log(item, 'item');
                     var current_time = item.ready_flag === 1 ? this.parseDate(item.ready_time) : new Date();
                     var created_time = this.parseDate(item.created_at);
                     var elapsed_time = (current_time.getTime() - created_time.getTime()) / 60000;

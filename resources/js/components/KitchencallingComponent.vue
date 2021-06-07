@@ -10,6 +10,7 @@
         data: function(){
             return {
                 count_notification: [],
+                soundUrl: 'http://soundbible.com/mp3/analog-watch-alarm_daniel-simion.mp3',
             }
         },
         mounted() {
@@ -20,12 +21,10 @@
             //         this.count_notification = response.data;
             //     })
             // this.get_notification();
-            // console.log(this.count_notification);
         },
         created() {
             this.get_notification();
             this.get_echo();
-            // console.log(this.count_notification);
         },
         methods: {
             get_notification() {
@@ -38,10 +37,10 @@
                 Echo.channel('notification-channel')//public channel
                     .listen('NotificationEvent', (event) => {
                         this.count_notification = event.count_notification;
-                        console.dir(this.count_notification);
+                        console.dir('notification-channel');
                         if (this.count_notification.attend_count > 0) {
-                            var sound = document.getElementById('sound1');
-                            sound.play();
+                            var audio = new Audio(data.soundurl);
+                            audio.play();
                         }
                     });
             },

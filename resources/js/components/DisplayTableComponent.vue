@@ -20,7 +20,6 @@
             get_change_table() {
                 Echo.channel('table-move-channel')//public channel
                 .listen('TableMoveEvent', (event) => {
-                    console.log(event);
                     if(this.order_id === event.display_table_name.order_id) {
                         location.href = window.location.href;
                     }

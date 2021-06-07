@@ -25,9 +25,7 @@
         created() {
             Echo.channel('notification-channel')//public channel
             .listen('NotificationEvent', (event) => {
-                // console.log(event.count_notification.ready_pay_count);
                 this.count_notification = event.count_notification;
-                // console.log(this.count_notification.ready_pay_count);
                 if( this.count_notification.selected == 1 ){
                     document.getElementById("belled_icon_"+this.count_notification.table_id).src = "/img/calling.png";
                     document.getElementById("belled_list_"+this.count_notification.table_id).src = "/img/calling.png";
